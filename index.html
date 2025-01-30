@@ -1,0 +1,711 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>CRM</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1822e68a-672b-80b5-beaa-f8e5740ce4a3" class="page sans"><header><h1 class="page-title">CRM</h1><p class="page-description"></p></header><div class="page-body"><h2 id="1892e68a-672b-803c-96d8-e4a1f037c6aa" class="">Matter</h2><hr id="1892e68a-672b-802e-b8e3-ca27f9f404d1"/><p id="18b2e68a-672b-80d5-b7f8-e19a6858180f" class="">A matter is an organized record for a client, containing all the information related to a specific case. A single client can have multiple matters.</p><ul id="1892e68a-672b-808b-959a-ed1d1deaa1eb" class="toggle"><li><details open=""><summary><code>new_case.php</code>  Create new matter page</summary><p id="1892e68a-672b-808c-9209-fe961b6f1251" class="">This is a page for crate new matter. </p><figure id="1892e68a-672b-8072-b5ed-e592144a3800" class="image"><a href="image.png"><img style="width:681.984375px" src="image.png"/></a></figure><p id="1892e68a-672b-803c-ad57-ecf74cad482d" class="">The <code>mdl_menu_left_new_case.php</code> serves as a sidebar component, and it is one among many similar components that contribute to the overall structure.”</p><h3 id="1892e68a-672b-80bc-b9ea-d1d4f80837d8" class="">Table for matter</h3><p id="1892e68a-672b-80f6-9e5e-f607187ab6fe" class="">When we create new matter, our date saved into multiple table.</p><table id="1892e68a-672b-80af-a5c7-cfe3ebdc1bd0" class="simple-table"><thead class="simple-table-header"><tr id="1892e68a-672b-800a-afe3-e955c83b1169"><th id="TjFz" class="simple-table-header-color simple-table-header" style="width:261px">Table Name</th><th id="fMwA" class="simple-table-header-color simple-table-header" style="width:398px">Section Name &amp; Description</th></tr></thead><tbody><tr id="1892e68a-672b-8018-80df-f7967942d7d7"><td id="TjFz" class="" style="width:261px"><code>case_cases</code></td><td id="fMwA" class="" style="width:398px"><strong>Matter Information</strong></td></tr><tr id="1892e68a-672b-800b-91eb-cc12798e89c4"><td id="TjFz" class="" style="width:261px"><code>members</code> </td><td id="fMwA" class="" style="width:398px"><strong>Client Information :</strong> client Information stored in this table.</td></tr><tr id="1892e68a-672b-80e2-b326-d16801dd664e"><td id="TjFz" class="" style="width:261px"><code>client_related_contacts</code></td><td id="fMwA" class="" style="width:398px"><strong>Related Contacts : </strong>If client has any related contact it stored in this table.</td></tr></tbody></table></details></li></ul><ul id="1892e68a-672b-80e3-8901-e872f5c7a9cf" class="toggle"><li><details open=""><summary><code>add_edit_case.php</code>  Matter edit page</summary><p id="1892e68a-672b-8081-a66c-fe0e2265a767" class="">Here, we can view the details of our matter.</p><figure id="1892e68a-672b-80a5-a738-dbda47cad4e2" class="image"><a href="image%201.png"><img style="width:681.984375px" src="image%201.png"/></a></figure><p id="1892e68a-672b-80a8-b482-fd6883ce8cb3" class="">
+</p><h3 id="1892e68a-672b-8037-94b6-d2adb46a1cc7" class="">Components Breakdown</h3><hr id="1892e68a-672b-8074-898d-cededdac13ca"/><p id="1892e68a-672b-80c1-96d9-cb5d22800916" class="">This page contains lot’s of <strong>component</strong>. let me breakdown.</p><ul id="1892e68a-672b-8061-9336-c18dcbedbb50" class="toggle"><li><details open=""><summary><strong>Matter Information </strong></summary><ul id="1892e68a-672b-801e-806f-d9aa611c1bf8" class="toggle"><li><details open=""><summary><strong> </strong><code>case_file/case_info.php</code> → This is matter information component.</summary><ul id="1892e68a-672b-80e4-8a15-f908caca7443" class="bulleted-list"><li style="list-style-type:disc"><code>crm/matter-status.php</code>→ We can set type and workflow on there.</li></ul><ul id="1892e68a-672b-8090-9592-ec0fe9ee6457" class="bulleted-list"><li style="list-style-type:disc"><code>crm/matter-whiteboard.php</code></li></ul><ul id="1892e68a-672b-80fa-ae41-e36906dc2bbd" class="bulleted-list"><li style="list-style-type:disc"><code>crm/track_matter.php</code>  → There is a track matter table.</li></ul><p id="1892e68a-672b-803a-8220-c691ac44770b" class="">
+</p></details></li></ul></details></li></ul><ul id="1892e68a-672b-809e-b03f-fcc2b338996b" class="toggle"><li><details open=""><summary><strong>Upcoming &amp; Overdue Events</strong></summary><p id="1892e68a-672b-8035-b209-c03a05111c98" class=""><code>crm/upcoming-and-overdue-events.php</code> → When a consultation or any other future activity is created, it will be displayed in this component.</p></details></li></ul><ul id="1892e68a-672b-800f-8c29-f9a4ea997e37" class="toggle"><li><details open=""><summary><strong>Client Information </strong></summary><p id="1892e68a-672b-800b-92ac-d54137376817" class=""><code>client-information.php</code> → Client information is displayed in an input field in that section.</p></details></li></ul><ul id="1892e68a-672b-8081-947e-ee8b5fe74ced" class="toggle"><li><details open=""><summary><strong>Email Settings</strong></summary><p id="1892e68a-672b-80a2-9f8f-d8a5074b5d63" class=""><code>email-settings.php</code> → It displays multiple email options for selection.</p><p id="18b2e68a-672b-8036-a5ff-eca6ca154d61" class="">If the client has any optional emails and related contact emails, they are displayed in a tabular format under email settings. We can select an email for sending messages to multiple email addresses, either manually or automatically.</p><ul id="1892e68a-672b-800c-9ee2-e15ca4815ca5" class="toggle"><li><details open=""><summary><code>case_file/case_emails.php</code> → The table component</summary><p id="1892e68a-672b-80d9-87ec-cf11407f2e36" class="">The emails are listed with a checkbox. If you select the checkbox and save, it will save the selected emails.</p><p id="1892e68a-672b-804c-a3af-db9ff360707d" class="">
+</p><p id="1892e68a-672b-8023-8c57-c80adf95f0a7" class="">
+</p></details></li></ul><p id="1892e68a-672b-80e1-b881-c1c25b2b3fc1" class="">The table <code>email_selection</code> stored the selected emails data. </p></details></li></ul><ul id="1892e68a-672b-80a3-a4d6-ce839e604d4a" class="toggle"><li><details open=""><summary><strong>Client Login Information</strong></summary><p id="1892e68a-672b-80aa-8f70-f3589beaa231" class=""><code>crm/client-login-information.php</code> This component is an input box that displays the client&#x27;s password. We can change the client&#x27;s login password from there.</p></details></li></ul><ul id="1892e68a-672b-80a7-9a18-f521953a5e96" class="toggle"><li><details open=""><summary><strong>Client Related Contacts</strong></summary><p id="1892e68a-672b-801b-ad69-f81a30f7d304" class=""><code>crm/client-related-contact.php</code> → This component enables us to add additional contacts related to the client. We can enter information about the individuals associated with the client.</p><p id="1892e68a-672b-80a1-88f1-ef83094b442c" class="">
+</p><p id="1892e68a-672b-800d-820f-f0313dbf419a" class="">The table <code>client_related_contacts</code> contains those data/information.</p><p id="1892e68a-672b-8002-bacd-d5b75f2b02d5" class="">
+</p></details></li></ul><ul id="1892e68a-672b-801f-bae3-f36af5c79c65" class="toggle"><li><details open=""><summary><strong>Permission</strong></summary><p id="1892e68a-672b-80ad-bf24-dab1b8084a22" class=""><code>crm/permission.php</code> → We can grant permission for a user to handle this matter through this component. When we permit a user, a notification will be sent to their dashboard, and the matter data will be displayed in the permitted user&#x27;s personal dashboard section.</p><p id="1892e68a-672b-8078-80cf-e152bcaa1b4a" class=""><br/>When we change any permission, the updates are reflected in the <br/><code>case_cases</code> table, which is the main table for matters.</p></details></li></ul><ul id="1892e68a-672b-802c-8a20-f2673b5a8277" class="toggle"><li><details open=""><summary><strong>Further Information</strong></summary><p id="1892e68a-672b-80ad-9743-f496a1a8bce4" class="">We don’t know about this component.</p></details></li></ul><ul id="1892e68a-672b-8091-bf2a-c8bed4077c68" class="toggle"><li><details open=""><summary><strong>Linked Matters with Client</strong></summary><p id="1892e68a-672b-80df-a14d-c0a04e6c5246" class=""><code>crm/linked-matters.php</code> As you know, we can create multiple matters using the same email address. This component helps us identify which matters are connected to the same client. It displays the linked matters, and if we want to manually link a matter, we can do so as well.<br/><br/></p><ul id="1892e68a-672b-80a0-be56-c04e510dcab4" class="toggle"><li><details open=""><summary><code>case_file/previous_case.php</code> → Automatically connected matters are displayed in this table. When we create a matter using a previous client&#x27;s email ID, a popup will appear.</summary><figure id="18a2e68a-672b-8087-87dd-ccae38a4442c" class="image"><a href="cb6e8d79-62d5-4e7a-bd52-81185c9648fa.png"><img style="width:710px" src="cb6e8d79-62d5-4e7a-bd52-81185c9648fa.png"/></a></figure><p id="18b2e68a-672b-805c-99a0-e60c1094855d" class="">
+</p><p id="18a2e68a-672b-8007-b210-db6997b15a11" class=""><br/>When we click the <br/><strong>&quot;OK&quot;</strong> button, it will open a new tab showing the previous matter. If the matter is different, we can return to our new matter in the left tab. After clicking the <strong>&quot;Save&quot;</strong> button, another popup will appear, such as:</p><figure id="18a2e68a-672b-80cd-9b57-d44d7eb59a17" class="image"><a href="image%202.png"><img style="width:653.953125px" src="image%202.png"/></a></figure><p id="18b2e68a-672b-80b0-9598-d4d9920b6762" class="">Now, if we click the <strong>&quot;YES&quot;</strong> button, the new matter will be created and automatically linked with the previous matter.</p><p id="18b2e68a-672b-801e-910e-c79661fe004f" class="">
+</p><p id="18b2e68a-672b-8082-9b8d-c74afe9a3300" class="">In the <strong>case_cases</strong> table, the column <strong>&quot;fkclientid&quot;</strong> is used to associate matters with clients. When a new matter is created with a unique client email, a system-generated ID is assigned to <strong>fkclientid</strong>. However, if the client already exists in the system and the matter is different, the same <strong>fkclientid</strong> is used to maintain the association. On the backend, this ID is utilized to retrieve and display related matters in the <strong>Linked Matters with Client</strong> component, presenting them in a structured tabular format.</p><p id="18a2e68a-672b-808b-b84c-c217c472c8e4" class="">
+</p><p id="18a2e68a-672b-80c0-ab86-f9929ccb4381" class="">You can see it : <code>case_file/previous_case.php</code> in this file.</p></details></li></ul><ul id="1892e68a-672b-807b-ac72-e40300addb37" class="toggle"><li><details open=""><summary><code>case_file/case_connection.php</code> → Manually connected matters shows in this table.</summary><p id="1892e68a-672b-8078-8896-dbff79ae533b" class=""><strong>How manually link matter works?</strong></p><hr id="1892e68a-672b-8015-941c-d6d471019589"/><p id="1892e68a-672b-8038-aa75-e426d08a64f3" class="">There is Button called <mark class="highlight-blue_background">  Link Matter  </mark><mark class="highlight-default_background">  . When we click this button it’s redirect to </mark></p><p id="1892e68a-672b-80af-afd5-fda1bda1b13d" class=""><code>crm/connect_matter.php</code> page with case id.</p><p id="1892e68a-672b-8006-8dda-c3213f8e61c0" class="">
+</p><figure id="1892e68a-672b-8068-8101-ea876d5ea033" class="image"><a href="4bd2f3e0-90ef-4897-a43c-2a41580676b2.png"><img style="width:611.9168591224018px" src="4bd2f3e0-90ef-4897-a43c-2a41580676b2.png"/></a></figure><p id="1892e68a-672b-804e-a119-f2e443f6666b" class="">There are two important component or linking the matter.</p><p id="1892e68a-672b-80b9-a84e-ee6bb6ffb959" class=""><code>module/mdl_search_cases_form.php</code> → Search Box</p><p id="1892e68a-672b-805e-899f-fad68f26401b" class=""><code>module/mdl_connect_case.php</code>→ Table</p><p id="1892e68a-672b-8015-85c5-c09ecca0648e" class="">
+</p><p id="1892e68a-672b-804b-8c1c-ddb9a072bd96" class="">In tools tab has a tick button to connect the matter. When we click the tick button the connection will stored in <code>matter_connection</code> table in database.</p></details></li></ul></details></li></ul></details></li></ul><p id="18b2e68a-672b-802d-a1ae-e4e3414096d2" class="">
+</p><h2 id="1892e68a-672b-80f1-a59d-da699b51139e" class="">Email Automations</h2><hr id="1892e68a-672b-80fc-946a-efc1f07e6eb6"/><p id="18b2e68a-672b-80bb-8808-f9e59bc8acc6" class="">Before learning about Email Automation, it&#x27;s important to understand <strong>Scheduled Tasks</strong> or <strong>Cron Jobs</strong>. These function like alarms, allowing us to set a PHP file on the server to run automatically at a specified time.</p><ul id="18b2e68a-672b-8009-bb09-f9a32d77a119" class="toggle"><li><details open=""><summary><strong>Example of Scheduled Task</strong></summary><hr id="18b2e68a-672b-8014-9b8c-fa6833dd20d3"/><p id="18b2e68a-672b-8001-8804-ce0583794d0d" class=""><strong>Step 1:</strong> Go to the Plesk Dashboard and select <strong>&quot;Scheduled Tasks.&quot;</strong></p><figure id="18b2e68a-672b-80be-8d92-d17c7b38b87e" class="image"><a href="099c9eef-5d8a-42a9-9c54-52f788be91c7.png"><img style="width:640.5055292259084px" src="099c9eef-5d8a-42a9-9c54-52f788be91c7.png"/></a></figure><p id="18b2e68a-672b-8071-8456-c2ae44046f4a" class="">
+</p><p id="18b2e68a-672b-80ad-897b-f3cc442dd079" class=""><strong>Step 2:</strong> You can now add a new file or view previously scheduled files.</p><figure id="18b2e68a-672b-80f0-8df3-f1abeb95f028" class="image"><a href="Screenshot_2025-01-29_141431.png"><img style="width:709.984375px" src="Screenshot_2025-01-29_141431.png"/></a></figure><p id="18b2e68a-672b-80b8-a2a5-c6b5dcee245d" class="">
+</p><p id="18b2e68a-672b-80e0-82f8-d1ee2e3bfb0b" class=""><strong>Step 3</strong>: Set the file and schedule the execution time as shown in the image.</p><figure id="18b2e68a-672b-80a9-b9aa-d5f372f53067" class="image"><a href="227a24d8-e9c2-4c32-8f0a-5e81c035767a.png"><img style="width:440.16506189821183px" src="227a24d8-e9c2-4c32-8f0a-5e81c035767a.png"/></a></figure></details></li></ul><ul id="18b2e68a-672b-80f1-bdb2-caf22452425f" class="toggle"><li><details open=""><summary><strong>How to start automation</strong></summary><hr id="18b2e68a-672b-80b4-bfc7-cb696874c8c3"/><p id="18b2e68a-672b-8030-90cc-f770310a597f" class="">When we create or open a matter, a popup will appear asking, <strong>&quot;</strong><em><strong>Do you want to run an automation right now?</strong></em><strong>&quot;</strong></p><figure id="18b2e68a-672b-80ca-b331-dbb10bc691d7" class="image"><a href="Screenshot_2025-01-29_152905.png"><img style="width:681.96875px" src="Screenshot_2025-01-29_152905.png"/></a></figure><p id="18b2e68a-672b-804f-80a6-c93eef31de3b" class=""> <br/><br/>Clicking the <br/><strong>&quot;Run Automation&quot;</strong> button will open a popup where you can select a start date and choose an automation template. Once you click the <strong>&quot;Start&quot;</strong> button, the automation will begin running.</p><figure id="18b2e68a-672b-80e5-97b0-f3eb4c22e8ba" class="image"><a href="image%203.png"><img style="width:681.96875px" src="image%203.png"/></a></figure><p id="18b2e68a-672b-8028-bd27-d74c4df2ab4c" class="">
+</p></details></li></ul><ul id="18b2e68a-672b-8049-9387-c97cada53011" class="toggle"><li><details open=""><summary><strong>How to create automation template</strong></summary><hr id="18b2e68a-672b-80cc-b343-d47a5f1eb899"/><p id="18b2e68a-672b-8084-b031-db04ddfce322" class=""> First, navigate to <strong>Settings</strong>, then click on <strong>Email Automation</strong>.</p><figure id="18b2e68a-672b-80af-9c33-cb693a571819" class="image"><a href="Screenshot_2025-01-29_164336.png"><img style="width:681.984375px" src="Screenshot_2025-01-29_164336.png"/></a></figure><p id="18b2e68a-672b-803a-b6e9-e9714c15401c" class=""><br/>Now, click on the <br/><strong>&quot;Create New&quot;</strong> button.</p><figure id="18b2e68a-672b-80a1-95a6-c7d34ad7df2d" class="image"><a href="Screenshot_2025-01-29_164904.png"><img style="width:681.984375px" src="Screenshot_2025-01-29_164904.png"/></a></figure><p id="18b2e68a-672b-8097-90d9-faed3641fa88" class="">
+</p><p id="18b2e68a-672b-80e5-a6e4-d41c9f1ada27" class=""><br/>Look at this box—this is the first node. Click on <br/><strong>&quot;Action&quot;</strong>, then select <strong>&quot;Create&quot;</strong>. A popup will then appear.</p><figure id="18b2e68a-672b-8049-8211-ee1014eb3f96" class="image"><a href="Screenshot_2025-01-29_165632.png"><img style="width:681.96875px" src="Screenshot_2025-01-29_165632.png"/></a></figure><p id="18b2e68a-672b-80aa-9ea3-f6791171f431" class="">
+</p><p id="18b2e68a-672b-80e7-b567-ff9a09967f7f" class="">This is the automation creation popup.</p><figure id="18b2e68a-672b-809d-907f-dc029be69a33" class="image"><a href="abe1ba7a-2e0a-490e-befa-d234bd58ad6a.png"><img style="width:367.65957446808517px" src="abe1ba7a-2e0a-490e-befa-d234bd58ad6a.png"/></a></figure><p id="18b2e68a-672b-808d-a66a-fe5233a63b8e" class="">
+</p><p id="18b2e68a-672b-8021-bd90-e1b837047341" class="">The fields <strong>&quot;Day&quot;</strong> and <strong>&quot;Last Action Date&quot;</strong> can be confusing. Here&#x27;s what they mean:</p><figure id="18b2e68a-672b-80ac-876b-ff087b19d214" class="image"><a href="Frame_2.png"><img style="width:709.984375px" src="Frame_2.png"/></a></figure><p id="18b2e68a-672b-801c-8165-c90bb25c0383" class="">To learn more about it. Here is the video you can watch.</p><p id="18b2e68a-672b-80dc-8035-c6aea56934f9" class="">
+</p></details></li></ul><ul id="18b2e68a-672b-8074-bc80-c22f14af6c13" class="toggle"><li><details open=""><summary><strong>Tables and Code</strong></summary><p id="18b2e68a-672b-80ba-94f2-f3bfd27c4e88" class=""><code>add_edit_case.php</code>  : This page holding the email automation component. ( <code>crm/automated-email-tab.php</code> ) . There is a “<strong>Create New</strong>” Button. If you click it another popup will appear with title “<strong>Create Email Automation” </strong>from <code>create_matter_email_automation.php</code> file. </p><p id="18b2e68a-672b-8065-8164-e7fc0fe2c149" class="">
+</p><p id="18b2e68a-672b-80ea-828c-ee397325e5a1" class="">Now if we create new automation and click the save button data will saved through the <code>scr_matter_email_automation.php</code> </p><figure id="18b2e68a-672b-808b-9bd6-fd2558e1482f" class="image"><a href="image%204.png"><img style="width:681.984375px" src="image%204.png"/></a></figure><p id="18b2e68a-672b-80ea-add9-c98b6eee7911" class=""><mark class="highlight-yellow_background">Mainly ‘</mark><mark class="highlight-yellow_background"><strong>create_v3</strong></mark><mark class="highlight-yellow_background">” case work here for save the automation record.</mark></p><p id="18b2e68a-672b-8058-a6bc-c65aec9805f8" class="">
+</p><p id="18b2e68a-672b-80b1-ba68-ee89f7c06ef7" class="">The Cron Job / Schedule Task run <code>cron_email_automation_v3.php</code> everyday at 8AM. This file sending email through the “<strong>sendgrid”</strong> api.</p><p id="18b2e68a-672b-80f3-b052-d6cbeab14486" class="">
+</p><p id="18b2e68a-672b-80e9-b8f8-fd1b8915b479" class="">
+</p></details></li></ul><figure id="18b2e68a-672b-8011-a1dc-ffbb43af3386"><div class="source"><a href="https://drive.google.com/file/d/17uv-RkMzjou8CIgphrcbogeGtc6oUOR_/view?pli=1">https://drive.google.com/file/d/17uv-RkMzjou8CIgphrcbogeGtc6oUOR_/view?pli=1</a></div></figure><p id="18b2e68a-672b-809a-a05d-d2c849f6f687" class="">
+</p><p id="18b2e68a-672b-80a5-b56c-f049ffb17f88" class="">
+</p><p id="18a2e68a-672b-80ec-bfd9-cf464115c571" class="">
+</p><p id="18a2e68a-672b-8042-8819-e5c971937a0d" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
